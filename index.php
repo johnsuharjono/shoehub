@@ -15,21 +15,9 @@
 </head>
 
 <body>
-  <header class="main__nav">
-    <div class="nav__logo">
-      <a href="#">
-        <img src="assets/logo.png" />
-        <span class="nav__logo__text">ShoeHub</span>
-      </a>
-    </div>
-    <nav>
-      <ul class="nav__links">
-        <li><a href="#">Product</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact us</a></li>
-      </ul>
-    </nav>
-  </header>
+  <?php
+  include_once 'components/navbar.php';
+  ?>
 
   <div class="content-wrapper">
     <!-- trending items -->
@@ -129,39 +117,10 @@
     </section>
   </div>
 
-  <footer>
-    <div class="footer-logo">
-      <img src="assets/logo.png" />
-      <span class="footer-logo-text">ShoeHub</span>
-    </div>
+  <?php
+  include_once 'components/footer.php';
+  ?>
 
-    <div class="footer-address">
-      <h3>22 Nanyang Avenue, Singapore 639810</h3>
-    </div>
-
-    <div class="footer-links">
-      <a href="#">About</a>
-      <a href="#">Shop running</a>
-      <a href="#">Shop casual</a>
-      <a href="#">Shop luxury</a>
-    </div>
-
-    <div class="footer-social-media footer-links">
-      <a href="#">Instagram</a>
-      <a href="#">Twitter</a>
-      <a href="#">Facebook</a>
-      <a href="#">Tiktok</a>
-    </div>
-
-    <div class="footer-contact">
-      <p>+65 8123 4567</p>
-      <p>contact@shoehub.com</p>
-    </div>
-
-    <div class="footer-copyright">
-      © 2023 ShoeHub. All rights reserved.
-    </div>
-  </footer>
 
 </body>
 
