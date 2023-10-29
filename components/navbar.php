@@ -4,14 +4,14 @@ session_start();
 
 <header class="main__nav">
   <div class="nav__logo">
-    <a href="#">
+    <a href="index.php">
       <img src="assets/logo.png" />
       <span class="nav__logo__text">ShoeHub</span>
     </a>
   </div>
   <nav class="nav__wrapper">
     <ul class="nav__links">
-      <li><a href="product.php">Product</a></li>
+      <li><a href="products.php">Product</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Contact us</a></li>
     </ul>
