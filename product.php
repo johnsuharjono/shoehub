@@ -11,7 +11,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="js/price-range-slider.js" defer></script>
 </head>
 
 <body>
@@ -19,193 +18,59 @@
   include_once 'components/navbar.php';
   ?>
 
-  <div class="layout">
-    <div class="sidebar-filter">
-      <form id="filter-form" action="" method="POST">
-        <section class="filter-wrapper">
-          <div class="filter-header-wrapper">
-            <h3>Filter</h3>
-            <a href="#" id="clear-filter">Clear</a>
-          </div>
-
-          <div>
-            <input class="filter-search-input" id="search" placeholder="search..." />
-          </div>
-
-          <!-- Category filter -->
-          <div class="filter-checkbox-wrapper">
-            <h4 class="">Category:</h4>
-            <div class="checkbox-container">
-              <div class="filter-form-field">
-                <input type="checkbox" id="running" name="category[]" value="running">
-                <label class="" for="running">Running</label>
-              </div>
-              <div class="filter-form-field">
-                <input type="checkbox" id="casual" name="category[]" value="casual">
-                <label class="" for="casual">Casual</label>
-              </div>
-              <div class="filter-form-field">
-                <input type="checkbox" id="luxury" name="category[]" value="luxury">
-                <label class="" for="luxury">Luxury</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Brand filter -->
-          <div class="filter-checkbox-wrapper">
-            <h4 class="">Brand:</h4>
-            <div class="checkbox-container">
-              <div class="filter-form-field">
-                <input type="checkbox" id="nike" name="brand[]" value="nike">
-                <label class="" for="nike">Nike</label>
-              </div>
-              <div class="filter-form-field">
-                <input type="checkbox" id="adidas" name="brand[]" value="adidas">
-                <label class="" for="adidas">Adidas</label>
-              </div>
-              <div class="filter-form-field">
-                <input type="checkbox" id="puma" name="brand[]" value="puma">
-                <label class="" for="puma">Puma</label>
-              </div>
-              <div class="filter-form-field">
-                <input type="checkbox" id="newbalance" name="brand[]" value="newbalance">
-                <label class="" for="newbalance">New Balance</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="filter-price">
-            <h4 class="">Price filter:</h4>
-            <div class="price-input">
-              <div class="price-input-field">
-                <span>Min</span>
-                <span class="price-input-currency-wrapper">$
-                  <input type="number" class="input-min" value="50">
-                </span>
-              </div>
-              <div class="separator">-</div>
-              <div class="price-input-field">
-                <span>Max</span>
-                <span class="price-input-currency-wrapper">$
-                  <input type="number" class="input-max" value="300">
-                </span>
-              </div>
-            </div>
-
-            <div class="slider-wrapper">
-              <div class="slider">
-                <div class="progress"></div>
-              </div>
-              <div class="range-input">
-                <input type="range" class="range-min" min="0" max="1000" value="50" step="1">
-                <input type="range" class="range-max" min="0" max="1000" value="300" step="1">
-              </div>
-            </div>
-          </div>
-
-          <div class="submit-filter-button-container">
-            <input type="submit" name="SUBMIT" value="APPLY" class="global-button submit-filter-button">
-          </div>
-        </section>
-      </form>
+  <section class="product-detail-wrapper">
+    <div class="product-detail-image-wrapper">
+      <img src="https://source.unsplash.com/NOpsC3nWTzY">
     </div>
 
+    <div class="product-detail-info-wrapper">
+      <h1 class="product-detail-name">Nike Air Max 270 React</h1>
+      <p class="product-detail-price">Rp 1.999.000</p>
+      <p class="product-detail-description">Lorem ipsum do
+        lor sit amet consectetur adipisicing
+        elit. Quisquam, voluptatum
+        voluptatibus. Quisquam, voluptatum
+        voluptatibus.</p>
 
-    <div class="product-catalog">
-      <!-- product card -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://source.unsplash.com/brown-nike-sneaker-on-yellow-textile-NOpsC3nWTzY">
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-title">Product Title</h3>
-          <p class="product-card-price">$ 99.99</p>
-          <button class="product-card-button">Add to cart</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://source.unsplash.com//unpaired-red-nike-sneaker-164_6wVEHfI">
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-title">Product Title</h3>
-          <p class="product-card-price">$ 99.99</p>
-          <button class="product-card-button">Add to cart</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://source.unsplash.com/white-black-and-red-nike-air-max-90-jLEGurepDco">
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-title">Product Title</h3>
-          <p class="product-card-price">$ 99.99</p>
-          <button class="product-card-button">Add to cart</button>
+
+      <div class="product-detail-size-picker">
+        <label for="shoe-size">Select Shoe Size:</label>
+        <div class="product-detail-size-pill">
+          <input type="radio" id="size-6" name="shoe-size" value="6">
+          <label for="size-6">6</label>
+
+          <input type="radio" id="size-7" name="shoe-size" value="7">
+          <label for="size-7">7</label>
+
+          <input type="radio" id="size-8" name="shoe-size" value="8">
+          <label for="size-8">8</label>
+
+          <input type="radio" id="size-9" name="shoe-size" value="9">
+          <label for="size-9">9</label>
+
+          <input type="radio" id="size-10" name="shoe-size" value="10">
+          <label for="size-10">10</label>
+
+          <input type="radio" id="size-11" name="shoe-size" value="11">
+          <label for="size-11">11</label>
+
         </div>
       </div>
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://source.unsplash.com/brown-nike-sneaker-on-yellow-textile-NOpsC3nWTzY">
+
+      <div class="product-detail-action-wrapper">
+        <div class="product-quantity">
+          <label for="quantity" style="display:none;">Quantity:</label>
+          <div class="quantity-input">
+            <button class="quantity-btn minus" onclick="decrementQuantity()">-</button>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+            <button class="quantity-btn plus" onclick="incrementQuantity()">+</button>
+          </div>
         </div>
-        <div class="product-card-content">
-          <h3 class="product-card-title">Product Title</h3>
-          <p class="product-card-price">$ 99.99</p>
-          <button class="product-card-button">Add to cart</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://source.unsplash.com//unpaired-red-nike-sneaker-164_6wVEHfI">
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-title">Product Title</h3>
-          <p class="product-card-price">$ 99.99</p>
-          <button class="product-card-button">Add to cart</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://source.unsplash.com/white-black-and-red-nike-air-max-90-jLEGurepDco">
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-title">Product Title</h3>
-          <p class="product-card-price">$ 99.99</p>
-          <button class="product-card-button">Add to cart</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://source.unsplash.com/brown-nike-sneaker-on-yellow-textile-NOpsC3nWTzY">
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-title">Product Title</h3>
-          <p class="product-card-price">$ 99.99</p>
-          <button class="product-card-button">Add to cart</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://source.unsplash.com//unpaired-red-nike-sneaker-164_6wVEHfI">
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-title">Product Title</h3>
-          <p class="product-card-price">$ 99.99</p>
-          <button class="product-card-button">Add to cart</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://source.unsplash.com/white-black-and-red-nike-air-max-90-jLEGurepDco">
-        </div>
-        <div class="product-card-content">
-          <h3 class="product-card-title">Product Title</h3>
-          <p class="product-card-price">$ 99.99</p>
-          <button class="product-card-button">Add to cart</button>
-        </div>
+        <button class="global-button">Add to Cart</button>
       </div>
 
     </div>
-  </div>
+  </section>
 
   <?php
   include_once 'components/footer.php';
@@ -214,3 +79,20 @@
 </body>
 
 </html>
+
+<script>
+  // Get the quantity input element
+  const quantityInput = document.getElementById("quantity");
+
+  // Function to increment the quantity
+  function incrementQuantity() {
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+  }
+
+  // Function to decrement the quantity
+  function decrementQuantity() {
+    if (quantityInput.value > 1) {
+      quantityInput.value = parseInt(quantityInput.value) - 1;
+    }
+  }
+</script>
