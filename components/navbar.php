@@ -20,6 +20,7 @@ session_start();
       <?php
       if (isset($_SESSION["userId"])) {
         $firstName = explode(" ", $_SESSION["userName"])[0];
+        echo "<li><a href='cart.php'>Cart</a></li>";
         echo "<p class='nav__user'>Hello, " . $firstName . "!</p>";
         echo "<li><a href='includes/signout.inc.php'>Logout</a></li>";
       } else {

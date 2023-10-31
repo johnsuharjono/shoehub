@@ -1,0 +1,21 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 64px 128px;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-wrapper > img {
+  width: 300px;
+  height: 300px;
+}
+
+.text-body {
+  text-align: center;
+}
+
+.back-to-home {
+  color: #000;
+}
