@@ -36,7 +36,7 @@ function passwordMatch($password, $passwordRepeat)
 
 function emailExists($conn, $email)
 {
-  $sql = "SELECT * FROM users WHERE email = ?;";
+  $sql = "SELECT * FROM user WHERE email = ?;";
   $stmt = mysqli_stmt_init($conn);
   if (!mysqli_stmt_prepare($stmt, $sql)) {
     header("location: ../signup.php?error=stmtfailed");
@@ -61,7 +61,7 @@ function emailExists($conn, $email)
 
 function createUser($conn, $name, $email, $password)
 {
-  $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?);";
+  $sql = "INSERT INTO user (name, email, password) VALUES (?, ?, ?);";
   $stmt = mysqli_stmt_init($conn);
   if (!mysqli_stmt_prepare($stmt, $sql)) {
     header("location: ../signup.php?error=stmtfailed");

@@ -1,0 +1,144 @@
+.cart-wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 600px;
+  margin-top: 30px;
+}
+
+.cart-wrapper hr {
+  opacity: 0.2;
+}
+
+.cart {
+  width: 1000px;
+  margin: 20px;
+}
+
+.my-cart-text {
+  margin-bottom: 16px;
+}
+
+.card {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  height: 140px;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.card-image > img {
+  width: 120px;
+  min-height: 120px;
+  max-height: 120px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.card-text {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.card-text > h3 {
+  font-weight: 600;
+}
+
+.card-text > p {
+  font-size: smaller;
+}
+
+.counter-wrapper {
+  height: 30px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: transparent;
+  border: solid #000 1px;
+}
+
+.counter-wrapper > span {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.counter-number {
+  pointer-events: none;
+}
+
+.card-misc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-right: 10px;
+}
+
+.card-misc .remove {
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.card-price > h3 {
+  text-align: right;
+  font-weight: 600;
+}
+
+.price-wrapper {
+  display: flex;
+  justify-content: end;
+  margin: 20px 0;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 200px;
+}
+
+.price-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price-breakdown span {
+  font-size: 12px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-breakdown .description {
+  flex: 1;
+}
+
+.price h5 {
+  font-weight: 500;
+}
+
+.checkout-button {
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  width: 100%;
+}
