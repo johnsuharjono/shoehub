@@ -12,7 +12,7 @@ session_start();
   <nav class="nav__wrapper">
     <ul class="nav__links">
       <li><a href="products.php">Product</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="about.php">About</a></li>
       <li><a href="#">Contact us</a></li>
     </ul>
 
