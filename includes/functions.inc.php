@@ -61,7 +61,7 @@ function emailExists($conn, $email)
 
 function createUser($conn, $name, $email, $password)
 {
-  $sql = "INSERT INTO user (name, email, password) VALUES (?, ?, ?);";
+  $sql = "INSERT INTO user (name, email, password, address, phone_number, role) VALUES (?, ?, ?, 'tama', '12', 'user');";
   $stmt = mysqli_stmt_init($conn);
   if (!mysqli_stmt_prepare($stmt, $sql)) {
     header("location: ../signup.php?error=stmtfailed");

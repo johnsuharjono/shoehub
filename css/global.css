@@ -10,6 +10,9 @@
 	justify-content: space-between;
 	padding-inline: 32px;
 	gap: 32px;
+	position: sticky;
+	top: 0;
+	z-index: 9;
 }
 
 .nav__logo a {
