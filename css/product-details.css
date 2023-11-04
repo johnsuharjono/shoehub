@@ -1,134 +1,134 @@
 .product-detail-wrapper {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 64px;
-  max-width: 1440px;
-  padding: 64px 128px;
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	gap: 64px;
+	max-width: 1440px;
+	padding: 64px 128px;
 }
 
 .product-detail-image-wrapper > img {
-  max-height: 440px;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	max-height: 440px;
+	border-radius: 12px;
+	box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .product-detail-info-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
 }
 
 .product-detail-title {
-  font-size: 36px;
-  font-weight: 600;
+	font-size: 36px;
+	font-weight: 600;
 }
 
 .product-detail-price {
-  font-size: 24px;
-  font-weight: 400;
+	font-size: 24px;
+	font-weight: 400;
 }
 
 .product-detail-description {
-  font-size: 16px;
-  font-weight: 300;
+	font-size: 16px;
+	font-weight: 300;
 }
 
 .product-detail-size-title {
-  font-size: 20px;
-  font-weight: 600;
+	font-size: 20px;
+	font-weight: 600;
 }
 
 .product-detail-size-picker {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .product-detail-size-pill {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
 }
 
 .product-detail-size-pill label {
-  margin: 0;
-  padding: 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 64px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 64px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .product-detail-size-pill input[type='radio'] {
-  display: none;
+	display: none;
 }
 
 .product-detail-size-pill input[type='radio']:checked + label {
-  background-color: #2b2b2b; /* Customize the selected color */
-  color: #fff; /* Customize the text color */
-  border-color: #2b2b2b; /* Customize the border color */
+	background-color: #2b2b2b; /* Customize the selected color */
+	color: #fff; /* Customize the text color */
+	border-color: #2b2b2b; /* Customize the border color */
 }
 
 .product-detail-action-wrapper {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: justify-between;
+	display: flex;
+	gap: 16px;
+	align-items: center;
+	justify-content: justify-between;
 }
 
 /* ... Previous CSS styles ... */
 
 /* Style the quantity input container */
 .quantity-input {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 /* Style the minus and plus buttons */
 .quantity-btn {
-  width: 30px;
-  height: 30px;
-  background-color: #2b2b2b; /* Customize the button color */
-  color: #fff; /* Customize the text color */
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 5px;
+	width: 30px;
+	height: 30px;
+	background-color: #2b2b2b; /* Customize the button color */
+	color: #fff; /* Customize the text color */
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 5px;
 }
 
 .quantity-btn:hover {
-  background-color: #656565; /* Customize the button color on hover */
+	background-color: #656565; /* Customize the button color on hover */
 }
 
 /* Style the plus button */
 .plus {
-  background-color: #2b2b2b; /* Customize the button color */
+	background-color: #2b2b2b; /* Customize the button color */
 }
 
 /* Style the input field */
 .product-quantity input[type='number'] {
-  width: 50px;
-  padding: 5px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin: 0 5px;
-  text-align: center;
+	width: 50px;
+	padding: 5px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin: 0 5px;
+	text-align: center;
 }
 
 .product-quantity input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
