@@ -3,13 +3,15 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = $_POST['name'];
   $email = $_POST['email'];
+  $address = $_POST['address'];
+  $phone_number = $_POST['phone'];
   $password = $_POST['password'];
-  $passwordRepeat = $_POST['password-repeat'];
+  $password_repeat = $_POST['password-repeat'];
 
   require_once 'dbh.inc.php';
   require_once 'functions.inc.php';
 
-  if (emptyInputSignup($name, $email, $password, $passwordRepeat) !== false) {
+  if (emptyInputSignup($name, $email, $address, $phone_number, $password, $password_repeat) !== false) {
     header("location: ../signup.php?error=emptyinput");
     exit();
   }
@@ -19,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
   }
 
-  if (passwordMatch($password, $passwordRepeat) !== false) {
+  if (passwordMatch($password, $password_repeat) !== false) {
     header("location: ../signup.php?error=passwordsdontmatch");
     exit();
   }
@@ -29,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
   }
 
-  createUser($conn, $name, $email, $password);
+  createUser($conn, $name, $email, $address, $phone_number, $password);
 } else {
   header("location: ../signup.php");
 }

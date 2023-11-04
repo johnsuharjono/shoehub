@@ -170,11 +170,18 @@ footer {
 }
 
 .auth-form {
-	width: 500px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	padding: 24px;
 	margin-block: 32px;
 	border-radius: 1em;
+}
+
+.signup-form {
+	width: 650px;
+}
+
+.login-form {
+	width: 500px;
 }
 
 .auth-form-header {
@@ -192,6 +199,12 @@ footer {
 	margin-block: 16px;
 }
 
+.auth-form-input-group {
+	display: grid;
+	gap: 16px;
+	grid-template-columns: repeat(2, 1fr);
+}
+
 .auth-form-input-field {
 	display: flex;
 	flex-direction: column;
@@ -202,6 +215,10 @@ footer {
 	padding: 8px;
 	border-radius: 4px;
 	border: 1px solid #ccc;
+}
+
+.auth-form-submit-button {
+	margin-block: 16px;
 }
 
 .auth-form-error-message {

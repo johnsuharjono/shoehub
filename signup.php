@@ -19,7 +19,7 @@
 
   <!-- Login form card -->
   <div class="auth-form-wrapper">
-    <form class="auth-form" id="signup" action="includes/signup.inc.php" method="post">
+    <form class="auth-form signup-form" id="signup" action="includes/signup.inc.php" method="post">
       <div class="auth-form-header">
         <h2>Sign Up</h2>
         <p>To start your transaction</p>
@@ -37,17 +37,29 @@
         </div>
 
         <div class="auth-form-input-field">
-          <label for="password">Password</label>
-          <input name="password" type="password" placeholder="Password" />
+          <label for="address">Address</label>
+          <input name="address" type="text" placeholder="Address" />
         </div>
-
         <div class="auth-form-input-field">
-          <label for="password-repeat">Confirm Password</label>
-          <input name="password-repeat" type="password" placeholder="Password" />
+          <label for="phone">Phone</label>
+          <input name="phone" type="text" placeholder="Phone" />
         </div>
 
-        <button class="global-button" type="submit" name="submit">Sign up</button>
+
+        <div class="auth-form-input-group">
+          <div class="auth-form-input-field">
+            <label for="password">Password</label>
+            <input name="password" type="password" placeholder="Password" />
+          </div>
+          <div class="auth-form-input-field">
+            <label for="password-repeat">Confirm Password</label>
+            <input name="password-repeat" type="password" placeholder="Password" />
+          </div>
+        </div>
+
       </div>
+
+      <button class="auth-form-submit-button global-button" type="submit" name="submit">Sign up</button>
 
       <?php
       if (isset($_GET["error"])) {
