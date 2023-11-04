@@ -110,7 +110,18 @@ function loginUser($conn, $email, $password)
     $_SESSION["userId"] = $emailExists["id"];
     $_SESSION["userEmail"] = $emailExists["email"];
     $_SESSION["userName"] = $emailExists["name"];
+    $_SESSION["cartItems"] = array();
     header("location: ../index.php");
     exit();
+  }
+}
+
+// Size function utils
+function format_shoe_size($number) {
+  // If it does not have a decimal part, remove comma
+  if (floor($number) != $number) {
+      return number_format($number, 1, '.', ',');
+  } else {
+      return number_format($number, 0, '.', '');
   }
 }

@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS product (
 CREATE TABLE IF NOT EXISTS product_size (
   id INT NOT NULL AUTO_INCREMENT,
   product_id INT NOT NULL,
-  size DECIMAL(2,1) NOT NULL,
+  size DECIMAL(3,1) NOT NULL,
   quantity INT NOT NULL,
   PRIMARY KEY (id)
 );
