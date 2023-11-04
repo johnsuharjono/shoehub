@@ -20,7 +20,9 @@
 
   <?php
     include_once 'includes/product-details.inc.php';
+    include_once 'includes/functions.inc.php';
     require_once 'includes/dbh.inc.php';
+
     $product_id = $_GET['id'];
     $row = fetch_details($conn, $product_id);
     $name = ucwords($row['name']);
@@ -29,13 +31,38 @@
     $brand = ucwords($row['brand']);
     $image_src = $row['image_src'];
 
-    echo "
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+      $quantity = $_POST['quantity'];
+      $size = $_POST['shoe-size'];
+
+      if (!isset($_SESSION["userId"])) {
+        header("location: ./product-details.php?id={$product_id}&error=not-signed-in");
+        exit();
+      }
+      
+      if (!isset($_POST['shoe-size'])) {
+        header("location: ./product-details.php?id={$product_id}&error=size-not-selected");
+        exit();
+      }
+
+      $quantity_in_stock = fetch_quantity($conn, $product_id, $size);
+      if ($quantity > $quantity_in_stock) {
+        header("location: ./product-details.php?id={$product_id}&error=max-quantity-reached-$quantity_in_stock");
+        exit();
+      }
+
+      add_to_cart($product_id, $name, $price, $size, $quantity, $image_src);
+      header("location: ./product-details.php?id={$product_id}&error=none");  
+    }
+
+    echo 
+    "
       <section class='product-detail-wrapper'>
         <div class='product-detail-image-wrapper'>
           <img src='{$image_src}'>
         </div>
 
-        <div class='product-detail-info-wrapper'>
+        <form class='product-detail-info-wrapper' action='product-details.php?id={$product_id}' method='POST'>
           <h1 class='product-detail-name'>{$brand} - {$name}</h1>
           <p class='product-detail-price'>S$ {$price}</p>
           <p class='product-detail-description'>{$desc}</p>
@@ -43,42 +70,59 @@
           <div class='product-detail-size-picker'>
             <label for='shoe-size'>Select Shoe Size:</label>
             <div class='product-detail-size-pill'>
-              <input type='radio' id='size-6' name='shoe-size' value='6'>
-              <label for='size-6'>6</label>
+    ";
 
-              <input type='radio' id='size-7' name='shoe-size' value='7'>
-              <label for='size-7'>7</label>
+    $result = fetch_sizes($conn, $product_id);
+    while ($row = mysqli_fetch_assoc($result)) {
+      $size = format_shoe_size($row['size']);
+      $is_disabled = $row['quantity'] > 0 ? '' : 'disabled';
+      $style = $row['quantity'] > 0 ? '' : 'background-color:#DDD;';
 
-              <input type='radio' id='size-8' name='shoe-size' value='8'>
-              <label for='size-8'>8</label>
-
-              <input type='radio' id='size-9' name='shoe-size' value='9'>
-              <label for='size-9'>9</label>
-
-              <input type='radio' id='size-10' name='shoe-size' value='10'>
-              <label for='size-10'>10</label>
-
-              <input type='radio' id='size-11' name='shoe-size' value='11'>
-              <label for='size-11'>11</label>
-
-            </div>
-          </div>
-
-          <div class='product-detail-action-wrapper'>
-            <div class='product-quantity'>
-              <label for='quantity' style='display:none;'>Quantity:</label>
-              <div class='quantity-input'>
-                <button class='quantity-btn minus' onclick='decrementQuantity()'>-</button>
-                <input type='number' id='quantity' name='quantity' value='1' min='1'>
-                <button class='quantity-btn plus' onclick='incrementQuantity()'>+</button>
-              </div>
-            </div>
-            <button class='global-button'>Add to Cart</button>
-          </div>
-
-        </div>
-      </section>
+      echo 
+      "
+        <input type='radio' id='size-$size' name='shoe-size' value='$size' $is_disabled>
+        <label for='size-$size' style='$style'>$size</label>
+      ";
+    }
+    echo
     "
+          </div>
+        </div>
+
+        <div class='product-detail-action-wrapper'>
+          <div class='product-quantity'>
+            <label for='quantity' style='display:none;'>Quantity:</label>
+            <div class='quantity-input'>
+              <button type='button' class='quantity-btn minus' onclick='decrementQuantity()'>-</button>
+              <input type='number' id='quantity' name='quantity' value='1' min='1'>
+              <button type='button' class='quantity-btn plus' onclick='incrementQuantity()'>+</button>
+            </div>
+          </div>
+
+          <button class='global-button' type='submit'>
+            Add to Cart
+          </button>
+        </div>
+      ";
+
+    if (isset($_GET["error"])) {
+      if ($_GET["error"] === "size-not-selected") {
+        echo "<p class='auth-form-error-message'>No size selected! Please select a size.</p>";
+      } else if (substr($_GET["error"], 0, 21) === "max-quantity-reached-") {
+        $quantity_in_stock = substr($_GET["error"], 21);
+        echo "<p class='auth-form-error-message'>Quantity selected not available! Quantity in stock for selected size: $quantity_in_stock.</p>";
+      } else if ($_GET["error"] === "not-signed-in") {
+        echo "<p class='auth-form-error-message'>Please log in first to add items to cart!</p>";
+      } else if ($_GET["error"] === "none") {
+        echo "<p class='auth-form-error-message'>Item successfully added to cart.</p>";
+      }
+    }
+
+    echo
+    "
+        </form>
+      </section>
+    ";
   ?>
 
   <?php

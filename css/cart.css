@@ -81,6 +81,7 @@
 .card-misc {
   display: flex;
   flex-direction: column;
+  align-items: end;
   justify-content: space-between;
   height: 100%;
   margin-right: 10px;

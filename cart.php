@@ -17,7 +17,7 @@
 
 <body>
   <?php
-  include_once 'components/navbar.php';
+  include_once 'components/navbar.php';  
   ?>
 
   <div class="cart-wrapper">
@@ -26,49 +26,52 @@
       <hr />
 
       <?php
-      class Product {
-        public $name;
-        public $size;
-        public $unitPrice;
-    
-        public function __construct($name, $size, $unitPrice) {
-            $this->name = $name;
-            $this->size = $size;
-            $this->unitPrice = $unitPrice;
+        class CartProduct {
+          public $product_id;
+          public $name;
+          public $size;
+          public $unit_price;
+          public $quantity;
+          public $image_src;
+      
+          public function __construct($product_id, $name, $size, $unit_price, $quantity, $image) {
+              $this->product_id = $product_id;
+              $this->name = $name;
+              $this->size = $size;
+              $this->unit_price = $unit_price;
+              $this->quantity = $quantity;
+              $this->image_src = $image;
+          }
         }
-      }
 
-      $p1 = new Product("Nike SB", "10", 145);
-      $p2 = new Product("Air Jordan", "12", 210);
-      $products = [$p1, $p2];
-
-      foreach ($products as $product) {
-        echo "
-          <div class='card-wrapper'>
-            <div class='card'>
-              <div class='card-image'>
-                <img src='https://source.unsplash.com/black-and-black-and-white-converse-all-star-high-top-sneakers-mWYhrOiAgmA'>
-              </div>
-              <div class='card-text'>
-                <h3>$product->name</h3>
-                <p>Size: $product->size</p>
-                <div class='counter-wrapper'>
-                  <span class='counter-minus'>-</span>
-                  <span class='counter-number'>1</span>
-                  <span class='counter-plus'>+</span>
+        $cart_items = $_SESSION['cartItems'];
+        foreach ($cart_items as $item) {
+          echo "
+            <div class='card-wrapper'>
+              <div class='card'>
+                <div class='card-image'>
+                  <img src='$item->image_src'>
+                </div>
+                <div class='card-text'>
+                  <h3>$item->name</h3>
+                  <p>Size: $item->size</p>
+                  <div class='counter-wrapper'>
+                    <span class='counter-minus'>-</span>
+                    <span class='counter-number'>$item->quantity</span>
+                    <span class='counter-plus'>+</span>
+                  </div>
+                </div>
+                <div class='card-misc'>
+                  <span class='remove'>remove</span>
+                  <div class='card-price'>
+                    <h3>\$$item->unit_price</h3>
+                  </div>
                 </div>
               </div>
-              <div class='card-misc'>
-                <span class='remove'>remove</span>
-                <div class='card-price'>
-                  <h3>\$$product->unitPrice</h3>
-                </div>
-              </div>
+              <hr />
             </div>
-            <hr />
-          </div>
-        ";
-      }
+          ";
+        }
       ?>
 
       <div class='price-wrapper'>
