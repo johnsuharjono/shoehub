@@ -34,7 +34,7 @@
           <div class="form-group">
             <textarea id="message" name="message" placeholder="Message" required></textarea>
           </div>
-          <button type="submit" class="global-button submit-button ">Submit</button>
+          <button type="submit" class="global-button submit-button">Submit</button>
         </form>
       </div>
 
@@ -114,12 +114,12 @@
     // Get form data
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
-    const email = 'admin@shoehub.com'
+    const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
     const message = document.getElementById("message").value;
 
     // Construct the mailto link
-    const mailtoLink = "mailto:" + email + "?subject=Contact Us&body=First Name: " + firstName + "%0D%0ALast Name: " + lastName + "%0D%0AEmail: " + email + "%0D%0APhone: " + phone + "%0D%0AMessage: " + message;
+    const mailtoLink = "mailto:admin@shoehub.com" + "?subject=ShoeHub Contact Us&body=First Name: " + firstName + "%0D%0ALast Name: " + lastName + "%0D%0AEmail: " + email + "%0D%0APhone: " + phone + "%0D%0AMessage: " + message;
     console.log(mailtoLink)
 
     // Open the default email client with the pre-filled content

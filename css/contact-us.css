@@ -14,8 +14,7 @@
 
 .contact-form-container {
 	background-color: #fff;
-	width: 850px;
-	padding: 20px;
+	width: auto;
 	border-radius: 10px;
 }
 
@@ -48,18 +47,12 @@ textarea {
 .form-group {
 	display: flex;
 	justify-content: space-between;
-	gap: 24px;
+	gap: 18px;
 }
 
 .submit-button {
 	margin: 0 auto;
 	width: 200px;
-	background-color: #333;
-	color: #fff;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
 }
 
 .faq-container h1 {
