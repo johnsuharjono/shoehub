@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS product (
   category VARCHAR(50), -- Categories: running, casual, luxury
   brand VARCHAR(50),  -- Brands: nike, adidas, puma, new balance
   image_src VARCHAR(255),
+  date_added DATETIME NOT NULL,
   PRIMARY KEY (id)
 );
 

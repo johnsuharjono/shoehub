@@ -9,10 +9,10 @@
   </div>
 
   <div class="footer-links">
-    <a href="#">About</a>
-    <a href="#">Shop running</a>
-    <a href="#">Shop casual</a>
-    <a href="#">Shop luxury</a>
+    <a href="about.php">About</a>
+    <a href="products.php?searchbar-input=&category%5B%5D=running&min-price=0&max-price=1000&SUBMIT=APPLY">Shop running</a>
+    <a href="products.php?searchbar-input=&category%5B%5D=casual&min-price=0&max-price=1000&SUBMIT=APPLY">Shop casual</a>
+    <a href="products.php?searchbar-input=&category%5B%5D=luxury&min-price=0&max-price=1000&SUBMIT=APPLY">Shop luxury</a>
   </div>
 
   <div class="footer-social-media footer-links">
