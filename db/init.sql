@@ -43,4 +43,5 @@ CREATE TABLE IF NOT EXISTS product_size (
   size DECIMAL(3,1) NOT NULL,
   quantity INT NOT NULL,
   PRIMARY KEY (id)
+  UNIQUE (product_id, size)
 );
