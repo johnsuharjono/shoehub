@@ -136,6 +136,12 @@
           </div>
         </section>
       </form>
+      <!-- Add product button -->
+      <div class="add-product-button-wrapper">
+        <a href="add-product.php">
+          <button class="global-button">Add product</button>
+        </a>
+      </div>
     </div>
 
 
@@ -193,8 +199,8 @@
               <div class='product-card-content'>
                 <h3 class='product-card-title'>$product_name</h3>
                 <p class='product-card-price'>S$ $product_price</p>
-                <a href='product-details.php?id=$product_id'>
-                  <button class='product-card-button'>Go to Product</button>
+                <a href='edit-product.php?id=$product_id'>
+                  <button class='product-card-button'>Edit product</button>
                 </a>
               </div>
             </div>

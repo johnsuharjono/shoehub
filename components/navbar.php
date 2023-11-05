@@ -14,6 +14,11 @@ session_start();
       <li><a href="products.php">Product</a></li>
       <li><a href="about.php">About</a></li>
       <li><a href="contact-us.php">Contact us</a></li>
+      <?php
+      if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+        echo "<li><a href='manage-product.php'>Manage Product</a></li>";
+      }
+      ?>
     </ul>
 
     <ul class="nav__links">
