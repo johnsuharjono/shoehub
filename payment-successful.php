@@ -22,7 +22,7 @@
     <img src="assets/payment-successful.png"/>
     <div class="text-body">
       <h3>Payment Successful!</h3>
-      <p>Thank you for your payment. An automated payment receipt will be sent to your registered email.</p>
+      <p>Thank you for your payment. An order summary will be sent to your registered email.</p>
     </div>
     <a href="index.php" class="back-to-home">Back to Home</a>
   </div>

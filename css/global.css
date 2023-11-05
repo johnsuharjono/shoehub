@@ -225,3 +225,13 @@ footer {
 	color: red;
 	font-size: 0.8rem;
 }
+
+.auth-form-warning-message {
+	color: orange;
+	font-size: 0.8rem;
+}
+
+.auth-form-success-message {
+	color: green;
+	font-size: 0.8rem;
+}

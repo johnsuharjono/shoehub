@@ -74,7 +74,7 @@
         } else if ($_GET["error"] == "emailtaken") {
           echo "<p class='auth-form-error-message'>Email already taken!</p>";
         } else if ($_GET["error"] == "none") {
-          echo "<p class='auth-form-error-message'>You have signed up!</p>";
+          echo "<p class='auth-form-success-message'>You have signed up!</p>";
         }
       }
       ?>

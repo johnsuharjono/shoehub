@@ -52,7 +52,12 @@
   font-weight: 600;
 }
 
-.card-text > p {
+.card-description {
+  display: flex;
+  gap: 12px;
+}
+
+.card-description > p {
   font-size: smaller;
 }
 
@@ -67,11 +72,13 @@
   border: solid #000 1px;
 }
 
-.counter-wrapper > span {
+.counter-item {
   width: 100%;
   text-align: center;
   font-size: 14px;
   cursor: pointer;
+  text-decoration: none;
+  color: #000;
 }
 
 .counter-number {
@@ -87,10 +94,11 @@
   margin-right: 10px;
 }
 
-.card-misc .remove {
+.card-misc .remove-card {
   font-size: 12px;
   text-decoration: underline;
-  cursor: pointer;
+  cursor: pointer;  
+  color: #000;
 }
 
 .card-price > h3 {
@@ -142,4 +150,12 @@
   padding: 5px;
   cursor: pointer;
   width: 100%;
+}
+
+.empty-cart-text {
+  text-align: center;
+  font-weight: 500;
+  width: 100%;
+  font-size: 16px;
+  margin: 8px;
 }
