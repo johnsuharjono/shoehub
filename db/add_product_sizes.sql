@@ -1,11 +1,35 @@
--- Note: make sure product_id exists in product table
+-- Note: check if foreign keys exists; refer to add_products script for product_id
 
-INSERT INTO product_size (product_id, size, quantity)
+INSERT INTO product_size (id, product_id, size, quantity)
 VALUES 
-  (53, 6, 100),
-  (53, 7, 200),
-  (53, 8, 0),
-  (53, 9, 8),
-  (53, 10, 2),
-  (53, 11, 1)
+  (1, 1, 6, 100),  -- Air Force 1
+  (2, 1, 7, 200),
+  (3, 1, 8, 0),
+  (4, 1, 9, 8),
+  (5, 1, 10, 2),
+  (6, 1, 11, 1),
+  (7, 14, 6, 100), -- 1906R
+  (8, 14, 7, 200),
+  (9, 14, 8, 3),
+  (10, 14, 9, 0),
+  (11, 14, 10, 0),
+  (12, 14, 11, 1),
+  (13, 12, 6, 100), -- Adizero SL
+  (14, 12, 7, 200),
+  (15, 12, 8, 10),
+  (16, 12, 9, 8),
+  (17, 12, 10, 2),
+  (18, 12, 11, 1),
+  (19, 2, 6, 100),  -- Alphafly 2
+  (20, 2, 7, 200),
+  (21, 2, 8, 10),
+  (22, 2, 9, 8),
+  (23, 2, 10, 2),
+  (24, 2, 11, 1),
+  (25, 9, 6, 100),  -- Yeezy 700 V2 Inertia
+  (26, 9, 7, 200),
+  (27, 9, 8, 10),
+  (28, 9, 9, 8),
+  (29, 9, 10, 2),
+  (30, 9, 11, 1)
 ;
