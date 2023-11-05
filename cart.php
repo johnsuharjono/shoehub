@@ -11,13 +11,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="js/quantity-counter.js" defer></script>
-  <script src="js/checkout-logic.js" defer></script>
+  <!-- <script src="js/quantity-counter.js" defer></script> -->
 </head>
 
 <body>
   <?php
-  include_once 'components/navbar.php';  
+  include_once 'components/navbar.php';
   ?>
 
   <div class="cart-wrapper">
@@ -26,52 +25,57 @@
       <hr />
 
       <?php
-        class CartProduct {
-          public $product_id;
-          public $name;
-          public $size;
-          public $unit_price;
-          public $quantity;
-          public $image_src;
-      
-          public function __construct($product_id, $name, $size, $unit_price, $quantity, $image) {
-              $this->product_id = $product_id;
-              $this->name = $name;
-              $this->size = $size;
-              $this->unit_price = $unit_price;
-              $this->quantity = $quantity;
-              $this->image_src = $image;
-          }
-        }
+      if (count($_SESSION["cartItems"]) < 1) {
+        echo "<div class='empty-cart-text'>Cart is empty.</div>";
+      }
+      ?>
 
-        $cart_items = $_SESSION['cartItems'];
-        foreach ($cart_items as $item) {
-          echo "
+      <?php
+      $cart_items = $_SESSION['cartItems'];
+      $subtotal = 0;
+
+      foreach ($cart_items as $idx => $item) {
+        $current_subtotal = $item['unit_price'] * $item['quantity'];
+        $subtotal += $current_subtotal;
+
+        echo "
             <div class='card-wrapper'>
               <div class='card'>
                 <div class='card-image'>
-                  <img src='$item->image_src'>
+                  <img src='{$item['image_src']}'>
                 </div>
                 <div class='card-text'>
-                  <h3>$item->name</h3>
-                  <p>Size: $item->size</p>
-                  <div class='counter-wrapper'>
-                    <span class='counter-minus'>-</span>
-                    <span class='counter-number'>$item->quantity</span>
-                    <span class='counter-plus'>+</span>
+                  <h3 name='product-name'>{$item['name']}</h3>
+                  <div class='card-description'>
+                    <p>Size: {$item['size']}</p>
+                    <p>Price: S\${$item['unit_price']}</p>
                   </div>
+                  <div class='counter-wrapper'>
+                    <a class='counter-minus counter-item' href='./includes/cart.inc.php?subtract=$idx'>-</a>
+                    <span class='counter-number counter-item'>{$item['quantity']}</span>
+                    <a class='counter-plus counter-item' href='./includes/cart.inc.php?add=$idx'>+</a>
+                  </div>
+        ";
+        if (isset($_GET['error']) && $_GET['error'] == 'max-quantity-reached' && isset($_GET['item']) && $idx == $_GET['item']) {
+          echo "<p class='auth-form-warning-message'>Maximum quantity reached.</p>";
+        }
+        echo
+        "
                 </div>
                 <div class='card-misc'>
-                  <span class='remove'>remove</span>
+                  <a class='remove-card' href='./includes/cart.inc.php?remove=$idx'>remove</a>
                   <div class='card-price'>
-                    <h3>\$$item->unit_price</h3>
+                    <h3>\${$current_subtotal}</h3>
                   </div>
                 </div>
               </div>
               <hr />
             </div>
           ";
-        }
+      }
+
+      $service_charge = $subtotal * 0.08;
+      $order_total = $subtotal + $service_charge + 20;
       ?>
 
       <div class='price-wrapper'>
@@ -79,27 +83,32 @@
           <div class='price-breakdown'>
             <div class='row'>
               <span class='description'>Subtotal</span>
-              <span>$10</span>
+              <span><?php echo "S$$subtotal" ?></span>
             </div>
             <div class='row'>
-              <span class='description'>Service charge</span>
-              <span>$10</span>
+              <span class='description'>Service charge (8%)</span>
+              <span><?php echo "S$$$service_charge" ?></span>
             </div>
             <div class='row'>
               <span class='description'>Shipping costs</span>
-              <span>$10</span>
+              <span>S$20</span>
             </div>
           </div>
           <div>
             <div class='row'>
               <h5 class='description'>Order Total</h5>
-              <h5>$10</h5>
+              <h5><?php echo "S$$order_total" ?></h5>
             </div>
             <hr />
           </div>
-          <a href='payment-successful.php'>
+          <a href='./includes/cart.inc.php?checkout=1'>
             <button class='checkout-button'>Checkout</button>
           </a>
+          <?php
+            if (isset($_GET["error"]) && $_GET["error"] == 'empty-cart') {
+              echo "<p class='auth-form-error-message' style='text-align: center'>Cart is empty.</p>"; 
+            }
+          ?>
         </div>
       </div>
     </div>

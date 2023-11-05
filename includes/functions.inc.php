@@ -125,3 +125,15 @@ function format_shoe_size($number) {
       return number_format($number, 0, '.', '');
   }
 }
+
+// Quantity Utils
+function fetch_quantity($conn, $product_id, $size) {
+  $sql_query = "SELECT quantity FROM product_size WHERE product_id = $product_id AND size = $size";
+
+  $result = mysqli_query($conn, $sql_query);
+  if (mysqli_num_rows($result) == 0) {
+    return 0;
+  } else {
+    return mysqli_fetch_assoc($result)['quantity'];
+  }
+}

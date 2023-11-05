@@ -51,8 +51,11 @@
         exit();
       }
 
-      add_to_cart($product_id, $name, $price, $size, $quantity, $image_src);
-      header("location: ./product-details.php?id={$product_id}&error=none");  
+      if (!add_to_cart($conn, $product_id, $name, $price, $size, $quantity, $image_src)) {
+        header("location: ./product-details.php?id={$product_id}&error=max-quantity-reached-$quantity_in_stock");
+      } else {
+        header("location: ./product-details.php?id={$product_id}&error=none");  
+      }
     }
 
     echo 
@@ -110,11 +113,11 @@
         echo "<p class='auth-form-error-message'>No size selected! Please select a size.</p>";
       } else if (substr($_GET["error"], 0, 21) === "max-quantity-reached-") {
         $quantity_in_stock = substr($_GET["error"], 21);
-        echo "<p class='auth-form-error-message'>Quantity selected not available! Quantity in stock for selected size: $quantity_in_stock.</p>";
+        echo "<p class='auth-form-error-message'>Quantity not available! Quantity in stock for selected size: $quantity_in_stock.</p>";
       } else if ($_GET["error"] === "not-signed-in") {
         echo "<p class='auth-form-error-message'>Please log in first to add items to cart!</p>";
       } else if ($_GET["error"] === "none") {
-        echo "<p class='auth-form-error-message'>Item successfully added to cart.</p>";
+        echo "<p class='auth-form-success-message'>Item successfully added to cart.</p>";
       }
     }
 
