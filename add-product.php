@@ -36,41 +36,41 @@
     <h1 class='add-product-title'>Add Product</h1>
     <form class='add-product-form' action='includes/add-product.inc.php' method='POST'>
       <div class="image-preview">
-        <img id="image_preview" src="<?php echo $image_src; ?>" alt="Product Image">
+        <img id="image_preview" src="" alt="Product Image">
       </div>
 
       <div class="product-detail-wrapper">
         <div class="add-product-form-input-group">
           <div class="add-product-form-input-wrapper name-input-wrapper">
             <label for='name'>Product Name:</label>
-            <input type='text' name='name' value='<?php echo $name; ?>' placeholder='Product Name'>
+            <input type='text' name='name' placeholder='Product Name'>
           </div>
           <div class="add-product-form-input-wrapper price-input-wrapper">
             <label for='price'>Product Price:</label>
-            <input type='text' name='price' value='<?php echo $price; ?>' placeholder='Product Price'>
+            <input type='text' name='price' placeholder='Product Price'>
           </div>
         </div>
 
 
         <div class="add-product-form-input-wrapper">
           <label for='description'>Product Description:</label>
-          <textarea name='description' placeholder='Product Description'><?php echo $desc; ?></textarea>
+          <textarea name='description' placeholder='Product Description'></textarea>
         </div>
         <div class="add-product-form-input-group">
           <div class="add-product-form-input-wrapper brand-input-wrapper">
             <label for='brand'>Product Brand:</label>
-            <input type='text' name='brand' value='<?php echo $brand; ?>' placeholder='Product Brand'>
+            <input type='text' name='brand' placeholder='Product Brand'>
           </div>
           <div class="add-product-form-input-wrapper category-input-wrapper">
             <label for='category'>Product category:</label>
-            <input type='text' name='category' value='<?php echo $category; ?>' placeholder='Product Brand'>
+            <input type='text' name='category' placeholder='Product Brand'>
           </div>
         </div>
 
 
         <div class="add-product-form-input-wrapper image-source-input-wrapper">
           <label for='image_src'>Image Source:</label>
-          <input id="image-src-input" type='text' name='image_src' value='<?php echo $image_src; ?>' placeholder='Image Source'>
+          <input id="image-src-input" type='text' name='image_src' placeholder='Image Source'>
         </div>
       </div>
 
