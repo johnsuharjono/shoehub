@@ -1,4 +1,7 @@
 <?php
+require "../mail_patch.php";
+
+use function mail_patch\mail;
 
 include_once '../components/navbar.php';
 include_once './functions.inc.php';
@@ -57,7 +60,8 @@ if (isset($_GET['checkout'])) {
   header("location: ../payment-successful.php");
 }
 
-function successful_checkout($conn, $cart_items, $user_id) {
+function successful_checkout($conn, $cart_items, $user_id)
+{
   // DB orders logic
   $order_query = "INSERT INTO `order` (user_id, date) VALUES ($user_id, NOW());";
   mysqli_query($conn, $order_query);
@@ -79,19 +83,29 @@ function successful_checkout($conn, $cart_items, $user_id) {
     $count += 1;
   }
 
-  mysqli_query($conn, $order_item_query);
+  // mysqli_query($conn, $order_item_query);
 
   // DB products logic TODO
-  
 
-  // Email logic TODO
+
+  // TODO: Email logic
+  $to = "john.suharjono10@gmail.com";
+  $subject = "Order Confirmation";
+  $message = "Thank you for your order!";
+  $headers = 'From: shoehub@localhost' . "\r\n" .
+    'Reply-To: shoehub@localhost' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+  $headers .= "MIME-Version: 1.0" . "\r\n";
+  $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+  mail($to, $subject, $message, $headers);
 
 
   // Clear cart
-  $_SESSION["cartItems"] = array();
+  // $_SESSION["cartItems"] = array();
 }
 
-function fetch_product_size_id($conn, $product_id, $size) {
+function fetch_product_size_id($conn, $product_id, $size)
+{
   $query = "SELECT id FROM product_size WHERE product_id = $product_id AND size = $size";
   $result = mysqli_query($conn, $query);
   return mysqli_fetch_assoc($result)['id'];
