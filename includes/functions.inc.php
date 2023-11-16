@@ -159,7 +159,7 @@ function edit_product_details($conn, $product_id, $name, $description, $price, $
   $stmt = mysqli_prepare($conn, $sql_query);
 
   if ($stmt) {
-    mysqli_stmt_bind_param($stmt, "ssdsssi", $name, $description, $price, $category, $brand, $image_src, $product_id);
+    mysqli_stmt_bind_param($stmt, "ssdsssi", $name, $description, $price, strtolower($category), $brand, $image_src, $product_id);
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
@@ -174,11 +174,11 @@ function edit_product_details($conn, $product_id, $name, $description, $price, $
 
 function add_product($conn, $name, $description, $price, $category, $brand, $image_src)
 {
-  $sql_query = "INSERT INTO product (name, description, price, category, brand, image_src) VALUES (?, ?, ?, ?, ?, ?)";
+  $sql_query = "INSERT INTO product (name, description, price, category, brand, image_src, date_added) VALUES (?, ?, ?, ?, ?, ?, NOW())";
   $stmt = mysqli_prepare($conn, $sql_query);
 
   if ($stmt) {
-    mysqli_stmt_bind_param($stmt, "ssdsss", $name, $description, $price, $category, $brand, $image_src);
+    mysqli_stmt_bind_param($stmt, "ssdsss", $name, $description, $price, strtolower($category), $brand, $image_src);
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
