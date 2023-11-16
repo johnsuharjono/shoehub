@@ -32,6 +32,8 @@ function fetch_trending($conn) {
       "image_src"=>$product['image_src']
     );
     array_push($products, $new);
+    mysqli_free_result($product_result);
   }
+  mysqli_free_result($result);
   return $products;
 }

@@ -82,7 +82,7 @@
         <div class='price'>
           <div class='price-breakdown'>
             <div class='row'>
-              <span class='description'>Subtotal</span>
+              <span class='description'>Total</span>
               <span><?php echo "S$$subtotal" ?></span>
             </div>
             <div class='row'>

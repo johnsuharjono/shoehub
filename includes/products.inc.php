@@ -21,7 +21,21 @@ function fetch_products($conn, $min_price, $max_price, $selected_brands, $select
 
   $result = mysqli_query($conn, $sql);
 
-  return $result;
+  $products = array();
+  while ($row = mysqli_fetch_assoc($result)) {
+    $new_product = array(
+      "id"=>$row["id"],
+      "name"=>$row["name"],
+      "price"=>$row["price"],
+      "image_src"=>$row["image_src"],
+      "brand"=>$row["brand"],
+      "category"=>$row["category"]
+    );
+    array_push($products, $new_product);
+  }
+
+  mysqli_free_result($result);
+  return $products;
 }
 
 function fetch_all_brands($conn) {
@@ -35,5 +49,25 @@ function fetch_all_categories($conn) {
   $sql = "SELECT DISTINCT category FROM product ORDER BY category;";
   $result = mysqli_query($conn, $sql);
   
+  return $result;
+}
+
+function split_into_pages($array, $max_count) {
+  $result = array();
+  $current_subarray = array();
+
+  foreach ($array as $item) {
+    array_push($current_subarray, $item);
+
+    if (count($current_subarray) === $max_count) {
+      array_push($result, $current_subarray);
+      $current_subarray = array();
+    }
+  }
+
+  if (!empty($current_subarray)) {
+    array_push($result, $current_subarray);
+  }
+
   return $result;
 }

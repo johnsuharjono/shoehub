@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="js/price-range-slider.js" defer></script>
+  <script src="js/pagination.js" defer></script>
 </head>
 
 <body>
@@ -136,71 +137,99 @@
           </div>
         </section>
       </form>
+
+      <div>
+        <?php
+          if (isset($_GET['min-price'])) {
+            $min_price = $_GET['min-price'];
+          } else {
+            $min_price = "0";
+          }
+          if (isset($_GET['max-price'])) {
+            $max_price = $_GET['max-price'];
+          } else {
+            $max_price = "1000";
+          }
+          if (isset($_GET['brand'])) {
+            $selected_brands = $_GET['brand'];
+          } else {
+            $selected_brands = array();
+          }
+          if (isset($_GET['category'])) {
+            $selected_categories = $_GET['category'];
+          } else {
+            $selected_categories = array();
+          }
+          if (isset($_GET['searchbar-input'])) {
+            $searchbar_input = $_GET['searchbar-input'];
+          } else {
+            $searchbar_input = "";
+          }
+
+          $products = fetch_products($conn, $min_price, $max_price, $selected_brands, $selected_categories, $searchbar_input);
+          $product_count = count($products);
+          echo "Products found: $product_count";
+        ?>
+      </div>
+
+      <div class='pagination-wrapper'>
+        <?php
+          $pages = split_into_pages($products, 6);
+
+          if (isset($_GET['page'])) {
+            $current_page = $_GET['page'];
+          } else {
+            $current_page = 1;
+          }
+          for ($i = 1; $i < count($pages) + 1; $i++) {
+            $style = "";
+            if ($i == $current_page) {
+              $style = "background: #000; color: #fff;";
+            }
+            echo "<button onClick='addPageToQueryParams($i)' style='$style'>$i</button>";
+          }
+        ?>
+      </div>
     </div>
 
 
     <div class="product-catalog">
       <!-- product card -->
       <?php
-      if (isset($_GET['min-price'])) {
-        $min_price = $_GET['min-price'];
-      } else {
-        $min_price = "0";
-      }
-      if (isset($_GET['max-price'])) {
-        $max_price = $_GET['max-price'];
-      } else {
-        $max_price = "1000";
-      }
-      if (isset($_GET['brand'])) {
-        $selected_brands = $_GET['brand'];
-      } else {
-        $selected_brands = array();
-      }
-      if (isset($_GET['category'])) {
-        $selected_categories = $_GET['category'];
-      } else {
-        $selected_categories = array();
-      }
-      if (isset($_GET['searchbar-input'])) {
-        $searchbar_input = $_GET['searchbar-input'];
-      } else {
-        $searchbar_input = "";
-      }
-
-
-      $result = fetch_products($conn, $min_price, $max_price, $selected_brands, $selected_categories, $searchbar_input);
-
-      if (mysqli_num_rows($result) == 0) {
-        echo "
+        if (count($products) == 0) {
+          echo "
           <div class='no-product-wrapper'>
             <h5 class='no-product-text'>No products found.</h5>
           </div>
           ";
       }
 
-      while ($row = mysqli_fetch_assoc($result)) {
-        $product_name = $row['name'];
-        $product_price = $row['price'];
-        $product_image = $row['image_src'];
-        $product_id = $row['id'];
+        $current_page = array();
+        if (count($pages) > 0) {
+          if (isset($_GET['page'])) {
+            $current_page = $pages[$_GET['page'] - 1];
+          } else {
+            $current_page = $pages[0];
+          }
+        }
 
-        echo "
+        for ($i = 0; $i < count($current_page); $i++) {
+          $product = $current_page[$i];
+          echo "
             <div class='product-card'>
               <div class='product-card-image'>
-                <img src='$product_image'>
+                <img src='{$product['image_src']}'>
               </div>
               <div class='product-card-content'>
-                <h3 class='product-card-title'>$product_name</h3>
-                <p class='product-card-price'>S$ $product_price</p>
-                <a href='product-details.php?id=$product_id'>
+                <h3 class='product-card-title'>{$product['name']}</h3>
+                <p class='product-card-price'>S$ {$product['price']}</p>
+                <a href='product-details.php?id={$product['id']}'>
                   <button class='product-card-button'>Go to Product</button>
                 </a>
               </div>
             </div>
           ";
-      }
-      mysqli_free_result($result);
+        }
       ?>
     </div>
   </div>
