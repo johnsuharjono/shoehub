@@ -1,0 +1,145 @@
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 600px;
+}
+
+.page-wrapper hr {
+  opacity: 0.2;
+}
+
+.page {
+  width: 1000px;
+  margin: 20px;
+}
+
+.orders-text {
+  margin-bottom: 16px;
+}
+
+.empty-text {
+  text-align: center;
+  font-weight: 500;
+  width: 100%;
+  font-size: 16px;
+  margin: 80px 0;
+}
+
+.calendar-box {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0 20px 0;
+}
+
+.picker-button {
+  max-width: 160px;
+}
+
+.calendar {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  position: absolute;
+  z-index: 1;
+  display: none;
+}
+
+.calendar-header {
+  background-color: #2b2b2b;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#prevBtn,
+#nextBtn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#monthYear {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 10px;
+}
+
+.day {
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.day.current {
+  border: 1px solid #2b2b2b;
+}
+
+.day.selected {
+  background-color: #2b2b2b;
+  color: white;
+}
+
+#dateInput {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.order-table {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-card {
+  padding: 10px 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0;
+}
+
+th {
+  font-weight: 600;
+}
+
+.header-row {
+  background-color: #2b2b2b;
+  color: #FFF;
+}
+
+th, td {
+  width: 150px;
+}
+
+.order-details-cell {
+  width: 280px;
+}

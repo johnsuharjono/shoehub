@@ -17,6 +17,7 @@ session_start();
       <?php
       if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
         echo "<li><a href='manage-product.php'>Manage Product</a></li>";
+        echo "<li><a href='view-orders.php'>View Orders</a></li>";
       }
       ?>
     </ul>
