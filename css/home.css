@@ -40,7 +40,7 @@
 	opacity: 0;
 	transition: 200ms opacity ease-in-out;
 	transition-delay: 200ms;
-	background-color: #e0e0e0;
+	background-color: #f7f7f7;
 	border-radius: 12px;
 	cursor: pointer;
 }

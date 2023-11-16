@@ -16,6 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
   }
 
+  if (nameValidation($name) === false) {
+    header("location: ../signup.php?error=invalidname");
+    exit();
+  }
+
+  if (phoneValidation($phone_number) === false) {
+    header("location: ../signup.php?error=invalidphonenumber");
+    exit();
+  }
+
   if (invalidEmail($email) !== false) {
     header("location: ../signup.php?error=invalidemail");
     exit();

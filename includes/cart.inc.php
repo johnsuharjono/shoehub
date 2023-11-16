@@ -80,12 +80,29 @@ function successful_checkout($conn, $cart_items, $user_id) {
   }
 
   mysqli_query($conn, $order_item_query);
-
-  // DB products logic TODO
   
+  // DB products logic
+  foreach ($cart_items as $item) {
+    $query = "UPDATE product_size SET quantity = quantity - {$item['quantity']} WHERE product_id = '{$item['product_id']}' AND size = '{$item['size']}';";
+    mysqli_query($conn, $query);
+  }
 
-  // Email logic TODO
+  // Email logic
+  $to = "f31ee@localhost";
+  $subject = "Order Confirmation";
+  $headers = 'From: f31ee@localhost' . "\r\n" .
+    'Reply-To: f31ee@localhost' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+  $headers .= "MIME-Version: 1.0" . "\r\n";
+  $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
 
+  $message = "Thank you for your order! \n";
+  foreach ($cart_items as $item) {
+    $message .= "{$item['quantity']} x {$item['name']}, size {$item['size']}\n";
+  }
+  $message = rtrim($message, "\n");
+
+  mail($to, $subject, $message, $headers);
 
   // Clear cart
   $_SESSION["cartItems"] = array();

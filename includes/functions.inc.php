@@ -12,6 +12,26 @@ function emptyInputSignup($name, $email, $address, $phone_number, $password, $pa
   return $result;
 }
 
+function nameValidation($string)
+{
+  $pattern = '/^[A-Za-z ]+$/';
+  if (preg_match($pattern, $string)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function phoneValidation($string)
+{
+  $pattern = '/^[0-9]+$/';
+  if (preg_match($pattern, $string)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function invalidEmail($email)
 {
   $result = false;
@@ -195,7 +215,6 @@ function edit_product_size_quantity($conn, $product_id, $size_quantity)
 {
   $values = array();
   foreach ($size_quantity as $size => $quantity) {
-    // Ensure that the size and quantity are valid (you may want to add validation)
     $size = (float)$size; // Convert the size to a floating-point number
     $quantity = (int)$quantity; // Convert the quantity to an integer
 

@@ -65,6 +65,10 @@
       if (isset($_GET["error"])) {
         if ($_GET["error"] == "emptyinput") {
           echo "<p class='auth-form-error-message'>Fill in all fields!</p>";
+        } else if ($_GET["error"] == "invalidname") {
+          echo "<p class='auth-form-error-message'>Name can only contain alphabets and spaces!</p>";
+        } else if ($_GET["error"] == "invalidphonenumber") {
+          echo "<p class='auth-form-error-message'>Phone number can only contain numbers!</p>";
         } else if ($_GET["error"] == "invalidemail") {
           echo "<p class='auth-form-error-message'>Choose a proper email!</p>";
         } else if ($_GET["error"] == "passwordsdontmatch") {
@@ -75,7 +79,7 @@
           echo "<p class='auth-form-error-message'>Email already taken!</p>";
         } else if ($_GET["error"] == "none") {
           echo "<p class='auth-form-success-message'>You have signed up!</p>";
-        }
+        } 
       }
       ?>
     </form>

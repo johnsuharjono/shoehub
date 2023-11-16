@@ -36,18 +36,18 @@
     <h1 class='add-product-title'>Add Product</h1>
     <form class='add-product-form' action='includes/add-product.inc.php' method='POST'>
       <div class="image-preview">
-        <img id="image_preview" src="" alt="Product Image">
+        <img id="image_preview" src="https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg" alt="Product Image">
       </div>
 
       <div class="product-detail-wrapper">
         <div class="add-product-form-input-group">
           <div class="add-product-form-input-wrapper name-input-wrapper">
             <label for='name'>Product Name:</label>
-            <input type='text' name='name' placeholder='Product Name'>
+            <input type='text' name='name' placeholder='Product Name' required>
           </div>
           <div class="add-product-form-input-wrapper price-input-wrapper">
             <label for='price'>Product Price:</label>
-            <input type='text' name='price' placeholder='Product Price'>
+            <input type='text' name='price' placeholder='Product Price' required>
           </div>
         </div>
 
@@ -59,18 +59,18 @@
         <div class="add-product-form-input-group">
           <div class="add-product-form-input-wrapper brand-input-wrapper">
             <label for='brand'>Product Brand:</label>
-            <input type='text' name='brand' placeholder='Product Brand'>
+            <input type='text' name='brand' placeholder='Product Brand' required>
           </div>
           <div class="add-product-form-input-wrapper category-input-wrapper">
             <label for='category'>Product category:</label>
-            <input type='text' name='category' placeholder='Product Brand'>
+            <input type='text' name='category' placeholder='Product Brand' required>
           </div>
         </div>
 
 
         <div class="add-product-form-input-wrapper image-source-input-wrapper">
           <label for='image_src'>Image Source:</label>
-          <input id="image-src-input" type='text' name='image_src' placeholder='Image Source'>
+          <input id="image-src-input" type='text' name='image_src' placeholder='Image Source' required>
         </div>
       </div>
 
@@ -84,7 +84,7 @@
             echo "
               <div class='add-size-quantity-wrapper'>
                 <label for='quantity_{$size}'>UK {$size}</label>
-                <input type='number' name='sizeQuantity[$size]' value='{$quantity}' placeholder='Quantity'>
+                <input type='number' name='sizeQuantity[$size]' value='{$quantity}' placeholder='Quantity' min='0'>
               </div>
             ";
           }

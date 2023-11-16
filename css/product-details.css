@@ -4,6 +4,7 @@
 	gap: 64px;
 	max-width: 1440px;
 	padding: 64px 128px;
+	margin: 0 auto;
 }
 
 .product-detail-image-wrapper > img {

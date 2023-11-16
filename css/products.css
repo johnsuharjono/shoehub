@@ -255,3 +255,24 @@
 	font-weight: 600;
 	margin: 50px 0;
 }
+
+.pagination-wrapper {
+  margin-top: 4px;
+  display: flex;
+  gap: 4px;
+}
+
+.pagination-wrapper > button {
+  border: 1px solid #000;
+  cursor: pointer;
+  background: #fff;
+  color: #2c303a;
+  height: 35px;
+  width: 35px;
+  border-radius: 24px;
+  padding: 0 10px;
+  letter-spacing: 0.1em;
+  transition: background 0.3s ease;
+  margin: 0 2px;
+  text-align: center;
+}

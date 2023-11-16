@@ -112,7 +112,7 @@
             echo "
               <div class='edit-size-quantity-wrapper'>
                 <label for='quantity_{$size}'>UK {$size}</label>
-                <input type='number' name='sizeQuantity[$size]' value='{$quantity}' placeholder='Quantity'>
+                <input type='number' name='sizeQuantity[$size]' value='{$quantity}' placeholder='Quantity' min='0'>
               </div>
             ";
           }
