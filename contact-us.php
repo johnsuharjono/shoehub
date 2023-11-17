@@ -22,7 +22,7 @@
     <div class="content-wrapper">
       <div class="contact-form-container">
         <h1>Contact Us</h1>
-        <form class="contact-form">
+        <form class="contact-form" onSubmit="return handleClick()">
           <div class="form-group">
             <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
             <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
@@ -110,7 +110,7 @@
       }
     });
   });
-  document.querySelector(".submit-button").addEventListener("click", function() {
+  function handleClick() {
     // Get form data
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
@@ -124,5 +124,5 @@
 
     // Open the default email client with the pre-filled content
     window.location.href = mailtoLink;
-  });
+  }
 </script>
